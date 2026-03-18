@@ -1,0 +1,5 @@
+{
+  "name": "Idea's to Project Blueprints v1",
+  "description": "An AI-powered application that takes a project idea in natural language and generates a comprehensive, structured project blueprint, including features, tech stack, milestones, and a UI design prototype.",
+  "requestFramePermissions": []
+}
