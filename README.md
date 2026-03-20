@@ -1,12 +1,16 @@
+An AI-powered web application that generates structured project blueprints from user ideas. Built with modern technologies, it helps developers quickly plan and visualize full-stack projects including features, tech stack, APIs, and architecture.
 
+ Features:
 
-## Run Locally
+ Generate complete project blueprints using AI
+ Smart suggestions for features and architecture
+ Tech stack recommendations (Frontend, Backend, Database)
+ Organized project structure output
+ API design overview
+ Fast and responsive UI
 
-**Prerequisites:**  Node.js
+ # Start development server
+npm run dev
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+ Live Demo
+ https://blueprintgenerator.vercel.app/
