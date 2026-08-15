@@ -106,11 +106,17 @@ export const generateBlueprint = async (idea: string): Promise<ProjectBlueprint>
     // });
 
       body: JSON.stringify({
-  model: "google/gemini-2.5-flash",
+  model: "openrouter/free",
+  max_tokens: 8000,
   messages: [
     {
       role: "system",
-      content: `You are a world-class senior software architect and product manager. Your task is to take a user's project idea and generate a comprehensive, structured project blueprint. Be creative, practical, and provide insightful recommendations. Your response MUST be in JSON format and strictly adhere to the provided schema: ${JSON.stringify(blueprintSchema)}`
+      content: `You are a world-class senior software architect and product manager.
+Your task is to take a user's project idea and generate a comprehensive,
+structured project blueprint.
+
+Your response MUST be in JSON format and strictly adhere to the provided schema:
+${JSON.stringify(blueprintSchema)}`
     },
     {
       role: "user",
@@ -119,7 +125,6 @@ export const generateBlueprint = async (idea: string): Promise<ProjectBlueprint>
   ],
   response_format: { type: "json_object" }
 })
-
     if (!response.ok) {
         const errorData = await response.json();
         throw new Error(`OpenRouter API error: ${errorData.error?.message || response.statusText}`);
