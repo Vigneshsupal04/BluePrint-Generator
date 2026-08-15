@@ -137,40 +137,28 @@ export const generateBlueprint = async (
         },
 
         body: JSON.stringify({
-          model: "openrouter/free",
+  model: "openrouter/free",
+  max_tokens: 4000,
+  messages: [
+    {
+      role: "system",
+      content: `You are a senior software architect.
 
-          // Keep the response reasonably small
-          max_tokens: 8000,
+Generate a project blueprint from the user's idea.
 
-          messages: [
-            {
-              role: "system",
-              content: `You are a world-class senior software architect and product manager.
+Return ONLY valid JSON matching this schema:
 
-Your task is to take a user's project idea and generate a comprehensive,
-structured project blueprint.
-
-Be creative, practical, and provide useful recommendations.
-
-Your response MUST be valid JSON.
-
-The JSON MUST follow this structure:
-
-${JSON.stringify(blueprintSchema)}
-
-Do not include markdown.
-Do not include \`\`\`json.
-Return ONLY the JSON object.`
-            },
-
-            {
-              role: "user",
-              content: idea
-            }
-          ]
-        })
-      }
-    );
+${JSON.stringify(blueprintSchema)}`
+    },
+    {
+      role: "user",
+      content: idea
+    }
+  ],
+  response_format: {
+    type: "json_object"
+  }
+});
 
     if (!response.ok) {
       const errorData = await response.json();
