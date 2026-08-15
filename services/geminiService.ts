@@ -88,22 +88,37 @@ export const generateBlueprint = async (idea: string): Promise<ProjectBlueprint>
         "HTTP-Referer": "https://blueprint-generator.local",
         "X-Title": "Blueprint Generator",
       },
+    //   body: JSON.stringify({
+    //     // model: "google/gemini-2.0-flash-001",
+    //     model: "google/gemini-2.5-flash",
+    //     messages: [
+    //       {
+    //         role: "system",
+    //         content: `You are a world-class senior software architect and product manager. Your task is to take a user's project idea and generate a comprehensive, structured project blueprint. Be creative, practical, and provide insightful recommendations. Your response MUST be in JSON format and strictly adhere to the provided schema: ${JSON.stringify(blueprintSchema)}`
+    //       },
+    //       {
+    //         role: "user",
+    //         content: idea
+    //       }
+    //     ],
+    //     response_format: { type: "json_object" }
+    //   })
+    // });
+
       body: JSON.stringify({
-        // model: "google/gemini-2.0-flash-001",
-        model: "google/gemini-2.5-flash",
-        messages: [
-          {
-            role: "system",
-            content: `You are a world-class senior software architect and product manager. Your task is to take a user's project idea and generate a comprehensive, structured project blueprint. Be creative, practical, and provide insightful recommendations. Your response MUST be in JSON format and strictly adhere to the provided schema: ${JSON.stringify(blueprintSchema)}`
-          },
-          {
-            role: "user",
-            content: idea
-          }
-        ],
-        response_format: { type: "json_object" }
-      })
-    });
+  model: "google/gemini-2.5-flash",
+  messages: [
+    {
+      role: "system",
+      content: `You are a world-class senior software architect and product manager. Your task is to take a user's project idea and generate a comprehensive, structured project blueprint. Be creative, practical, and provide insightful recommendations. Your response MUST be in JSON format and strictly adhere to the provided schema: ${JSON.stringify(blueprintSchema)}`
+    },
+    {
+      role: "user",
+      content: idea
+    }
+  ],
+  response_format: { type: "json_object" }
+})
 
     if (!response.ok) {
         const errorData = await response.json();
