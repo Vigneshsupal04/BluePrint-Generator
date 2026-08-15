@@ -89,7 +89,8 @@ export const generateBlueprint = async (idea: string): Promise<ProjectBlueprint>
         "X-Title": "Blueprint Generator",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.0-flash-001",
+        // model: "google/gemini-2.0-flash-001",
+        model: "google/gemini-2.5-flash",
         messages: [
           {
             role: "system",
